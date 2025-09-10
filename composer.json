@@ -1,0 +1,16 @@
+{
+   "name": "luizsantos85/php-tdd",
+   "description": "php with TDD",
+   "authors": [
+      {
+         "name": "Luiz Henrique Santos",
+         "email": "luiz.santos85@gmail.com"
+      }
+   ],
+   "autoload": {
+      "psr-4": {
+         "Core\\": "src/Core/"
+      }
+   },
+   "require": {}
+}
