@@ -41,3 +41,69 @@ Contribuições e notas finais
 -  Para dúvidas ou melhorias, descreva o que alterou e os logs observados para facilitar o diagnóstico.
 
 ---
+
+## Testes (PHPUnit + Mockery)
+
+### Entrar no container (Composer / Testes)
+
+Para executar comandos (Composer, PHPUnit) dentro do ambiente isolado use:
+
+```bash
+docker compose exec app bash
+ou
+docker-compose exec app bash
+```
+
+### Instalação das dependências
+
+Se ainda não instalou as dependências (vendor não versionado):
+
+```bash
+composer install
+```
+
+### Rodando todos os testes
+
+Via script definido no `composer.json`:
+
+```bash
+composer phpunit tests/Unit ou tests/Feature
+```
+
+Ou diretamente:
+
+```bash
+./vendor/bin/phpunit tests/Unit ou tests/Feature
+```
+
+### Estrutura de testes
+
+Testes organizados em:
+
+-  `tests/Unit` (testes de unidades / classes isoladas)
+-  `tests/Feature` (quando houver interações de múltiplos componentes)
+
+Arquivo de configuração: `phpunit.xml`
+
+### Exemplo de teste existente
+
+`tests/Unit/Core/Orders/CustomerTest.php` cobre comportamento básico da entidade `Customer` (atributo, mudança de estado).
+
+### Logs e cobertura (opcional)
+
+Há blocos comentados no `phpunit.xml` para gerar logs (`tests/logs/`). Para habilitar:
+
+1. Descomente as seções `<logging>` e `<coverage>`.
+2. Crie a pasta ignorada (se quiser local apenas):
+
+```bash
+mkdir -p tests/logs
+```
+
+### Dicas rápidas
+
+-  Use nomes descritivos em métodos de teste: `testQueDeveFazerAlgoClaro`.
+-  Evite dependência entre testes; cada teste deve ser independente.
+-  Mockery: ideal para simular dependências externas sem acoplar implementação real.
+
+---
