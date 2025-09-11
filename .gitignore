@@ -1,1 +1,5 @@
 /vendor/
+*.cache
+*.log
+*.env
+/tests/logs/
