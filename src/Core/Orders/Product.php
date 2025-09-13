@@ -37,4 +37,9 @@ class Product
         $acrescimo = ($total * $porcent) / 100;
         return $total + $acrescimo;
     }
+
+    public function getQuantity(): int
+    {
+        return $this->quantity;
+    }
 }
