@@ -4,6 +4,7 @@ namespace Tests\Unit\Core\Orders;
 
 use PHPUnit\Framework\TestCase;
 use Core\Orders\Product;
+use Mockery;
 
 class ProductUnitTest extends TestCase
 {
@@ -48,6 +49,22 @@ class ProductUnitTest extends TestCase
 
         // calcula total com 15% de acréscimo
         $this->assertEquals(23.00, $product->calcTotalPorcent(15));
+    }
+
+    public function testExampleMock()
+    {
+        $mockProduct = Mockery::mock(Product::class, [
+            'id' => '1',
+            'name' => 'Product 01',
+            'price' => 10.00,
+            'quantity' => 2,
+        ]);
+
+        $mockProduct->shouldReceive('getId')
+            ->andReturn('id');
+
+        Mockery::close();
+        $this->assertTrue(true);
     }
 
 }
